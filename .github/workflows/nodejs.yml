@@ -11,12 +11,11 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [10.3, 10.8, 12.4, 12.8, 13.11]
+        node-version: [10.19, 12.4, 12.8, 13.11]
 
     steps:
     - uses: actions/checkout@v2
@@ -25,4 +24,20 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: yarn --immutable
+    - run: yarn node test/index.js
+
+  build_10_3:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 10.19
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.19
+    - run: yarn --immutable # yarn doesn't work in node 10.3
+    - name: Use Node.js 10.3
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.19
     - run: yarn node test/index.js

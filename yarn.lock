@@ -370,7 +370,7 @@ resolve@^1.3.2:
   resolution: "resolve@patch:resolve@npm%3A1.15.1#builtin<compat/resolve>::version=1.15.1&hash=8fccd0"
   dependencies:
     path-parse: ^1.0.6
-  checksum: 2/fe7e72ddef33d5c157991b824ba2d439cafcd386cb4b26d86c32e77fea442bdd9a93c6cdd93ab90f87a29449008df64b53a8310dd89ebe88ea87fb5db09c03aa
+  checksum: 2/dceab9e78d618d4ebcef66c1c4c8bb28bc242fbb95625a498d759b6aaac00de0ebb91e9d6560f5f49ac073ab9e9e3e7450449b4bddf740ba8cb267b8b68ea70f
   languageName: node
   linkType: hard
 
