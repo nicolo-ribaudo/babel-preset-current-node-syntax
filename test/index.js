@@ -2,7 +2,7 @@ const fs = require("fs");
 const babel = require("@babel/core");
 const thisPreset = require("..");
 
-const fixtureVersions = ["12.4", "12.8"];
+const fixtureVersions = ["10.8", "12.4", "12.8"];
 const VERSION_RE = /^v?(?<major>\d+)\.(?<minor>\d+)(\.(?<patch>\d+))?/;
 
 const currentVersion = parseVersion(process.version);

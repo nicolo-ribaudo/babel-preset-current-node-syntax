@@ -1,4 +1,5 @@
 const tests = {
+  "bigint": ["1n"],
   "numeric-separator": ["1_2"],
   "class-properties": [
     "(class { x = 1 })",
