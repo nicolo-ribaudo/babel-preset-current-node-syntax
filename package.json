@@ -1,0 +1,26 @@
+{
+  "name": "babel-preset-current-node-syntax",
+  "version": "0.1.0",
+  "description": "A Babel preset that enables parsing of proposals supported by the current Node.js version.",
+  "main": "src/index.js",
+  "repository": "https://github.com/nicolo-ribaudo/babel-preset-current-node-syntax",
+  "author": {
+    "name": "Nicolò Ribaudo",
+    "url": "https://github.com/nicolo-ribaudo"
+  },
+  "dependencies": {
+    "@babel/plugin-syntax-class-properties": "^7.8.3",
+    "@babel/plugin-syntax-logical-assignment-operators": "^7.8.3",
+    "@babel/plugin-syntax-numeric-separator": "^7.8.3"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.9.0"
+  },
+  "resolutions": {
+    "@babel/core/@babel/parser": "7.9.0"
+  },
+  "license": "MIT"
+}
