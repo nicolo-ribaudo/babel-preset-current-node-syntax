@@ -1,4 +1,5 @@
 .yarn/cache
 .yarn/unplugged
 .yarn/install-state.gz
+.yarn/versions
 .pnp.js
