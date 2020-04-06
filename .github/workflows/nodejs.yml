@@ -23,7 +23,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: yarn --immutable
+    - run: yarn
     - run: yarn node test/index.js
 
   build_10_3:
@@ -35,7 +35,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 10.19
-    - run: yarn --immutable # yarn doesn't work in node 10.3
+    - run: yarn
     - name: Use Node.js 10.3
       uses: actions/setup-node@v1
       with:
