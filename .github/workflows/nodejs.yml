@@ -26,7 +26,7 @@ jobs:
     - run: yarn
     - run: yarn node test/index.js
 
-  build_10_3:
+  build_10_0:
     runs-on: ubuntu-latest
 
     steps:
@@ -36,8 +36,8 @@ jobs:
       with:
         node-version: 10.19
     - run: yarn
-    - name: Use Node.js 10.3
+    - name: Use Node.js 10.0
       uses: actions/setup-node@v1
       with:
-        node-version: 10.19
+        node-version: 10.0
     - run: yarn node test/index.js

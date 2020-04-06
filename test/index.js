@@ -2,16 +2,16 @@ const fs = require("fs");
 const babel = require("@babel/core");
 const thisPreset = require("..");
 
-const fixtureVersions = ["10.8", "12.4", "12.8"];
-const VERSION_RE = /^v?(?<major>\d+)\.(?<minor>\d+)(\.(?<patch>\d+))?/;
+const fixtures = require("./fixtures.json");
+const VERSION_RE = /^v?(?<major>\d+)(?:\.(?<minor>\d+))?(?:\.(?<patch>\d+))?/;
 
 const currentVersion = parseVersion(process.version);
 
 console.log(`INFO - Running on node ${process.version}`);
 
-for (const version of fixtureVersions) {
-  const code = fs.readFileSync(`${__dirname}/fixtures/node-${version}.js`, "utf8");
-  
+for (const [name, [version, code]] of Object.entries(fixtures)) {
+  if (name.startsWith("#")) continue; // "JSON comments"
+
   const shouldThrow = parseVersion(version) > currentVersion;
   let didThrow = false;
 
@@ -21,15 +21,16 @@ for (const version of fixtureVersions) {
     didThrow = true;
   }
 
+  const msg = `${name} (${version}) ${didThrow ? "threw" : "didn't throw"}`;
   if (didThrow === shouldThrow) {
-    console.log(`OK - ${version} ${didThrow ? "threw" : "didn't throw"}, as expected.`);
+    console.log(`OK - ${msg}, as expected.`);
   } else {
-    console.log(`FAIL - ${version} ${didThrow ? "threw" : "didn't throw"}, unexpectedly.`);
+    console.log(`FAIL - ${msg}, unexpectedly.`);
     process.exitCode = 1;
   }
 }
 
 function parseVersion(v) {
-  const { major, minor, patch = 0 } = v.match(VERSION_RE).groups;
+  const { major, minor = 0, patch = 0 } = String(v).match(VERSION_RE).groups;
   return Number(major) * 1e8 + Number(minor) * 1e4 + Number(patch);
 }

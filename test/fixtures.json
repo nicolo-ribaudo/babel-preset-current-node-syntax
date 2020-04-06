@@ -1,0 +1,13 @@
+{
+  "#______name_______": [ "min node version", "code" ],
+  "object rest/spread": [8.6, "({...x})"],
+  "async generators": [10.0, "async function* f() {}"],
+  "optional catch binding": [10.0, "try {} catch {}"],
+  "JSON superset": [10.0, "'\\u2028'"],
+  "bigint": [10.8, "10n"],
+  "public class fields": [12.4, "class A { x = 1 }"],
+  "private class fields": [12.4, "class A { #x = 1 }"],
+  "numeric separators": [12.7, "1_2"],
+  "optional chaining": [14.0, "a?.b"],
+  "nullish coalescing": [14.0, "a ?? b"]
+}

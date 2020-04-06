@@ -1,5 +1,18 @@
 const tests = {
-  "bigint": ["1n"],
+  // ECMAScript 2018
+  "object-rest-spread": ["({ ...{} })", "({ ...x } = {})"], // Babel 7.2.0
+  "async-generators": ["async function* f() {}"], //  Babel 7.2.0
+
+  // ECMAScript 2019
+  "optional-catch-binding": ["try {} catch {}"], // Babel 7.2.0
+  "json-strings": ["'\\u2028'"], // Babel 7.2.0
+
+  // ECMAScript 2020
+  "bigint": ["1n"], // Babel 7.8.0
+  "optional-chaining": ["a?.b"], // Babel 7.9.0
+  "nullish-coalescing-operator": ["a ?? b"], // Babel 7.9.0
+
+  // Stage 3
   "numeric-separator": ["1_2"],
   "class-properties": [
     "(class { x = 1 })",
