@@ -26,4 +26,4 @@ for (const [name, cases] of Object.entries(tests)) {
   }
 }
 
-module.exports = { plugins };
+module.exports = () => ({ plugins });
