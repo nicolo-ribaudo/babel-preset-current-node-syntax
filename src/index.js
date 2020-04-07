@@ -28,7 +28,7 @@ const works = (test) => {
     // Wrap the test in a function to only test the syntax, without executing it
     (0, eval)(`(() => { ${test} })`);
     return true;
-  } catch {
+  } catch (_error) {
     return false;
   }
 };
