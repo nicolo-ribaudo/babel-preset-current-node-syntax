@@ -3,7 +3,10 @@
   "version": "0.1.2",
   "description": "A Babel preset that enables parsing of proposals supported by the current Node.js version.",
   "main": "src/index.js",
-  "repository": "https://github.com/nicolo-ribaudo/babel-preset-current-node-syntax",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicolo-ribaudo/babel-preset-current-node-syntax.git"
+  },
   "author": {
     "name": "Nicolò Ribaudo",
     "url": "https://github.com/nicolo-ribaudo"
