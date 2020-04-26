@@ -11,6 +11,9 @@
     "name": "Nicolò Ribaudo",
     "url": "https://github.com/nicolo-ribaudo"
   },
+  "scripts": {
+    "test": "node ./test/index.js"
+  },
   "dependencies": {
     "@babel/plugin-syntax-async-generators": "^7.8.4",
     "@babel/plugin-syntax-bigint": "^7.8.3",
