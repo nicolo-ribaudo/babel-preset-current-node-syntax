@@ -9,5 +9,6 @@
   "private class fields": [12.4, "class A { #x = 1 }"],
   "numeric separators": [12.7, "1_2"],
   "optional chaining": [14.0, "a?.b"],
-  "nullish coalescing": [14.0, "a ?? b"]
+  "nullish coalescing": [14.0, "a ?? b"],
+  "import.meta": [10.4, "import.meta"]
 }
