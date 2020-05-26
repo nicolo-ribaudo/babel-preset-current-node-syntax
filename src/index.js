@@ -11,6 +11,7 @@ const tests = {
   "bigint": ["1n"], // Babel 7.8.0
   "optional-chaining": ["a?.b"], // Babel 7.9.0
   "nullish-coalescing-operator": ["a ?? b"], // Babel 7.9.0
+  "import-meta": ["import.meta"],
 
   // Stage 3
   "numeric-separator": ["1_2"],
