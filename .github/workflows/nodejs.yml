@@ -39,5 +39,5 @@ jobs:
     - name: Use Node.js 10.0
       uses: actions/setup-node@v1
       with:
-        node-version: 10.0
+        node-version: "10.0"
     - run: yarn test
