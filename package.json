@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-current-node-syntax",
-  "version": "0.1.4-0",
+  "version": "0.1.4",
   "description": "A Babel preset that enables parsing of proposals supported by the current Node.js version.",
   "main": "src/index.js",
   "repository": {
