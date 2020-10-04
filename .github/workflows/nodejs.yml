@@ -35,9 +35,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 10.19
-    - run: yarn
+    - run: YARN_NODE_LINKER=node-modules yarn
     - name: Use Node.js 10.0
       uses: actions/setup-node@v1
       with:
         node-version: "10.0"
-    - run: YARN_IGNORE_NODE=1 yarn test
+    - run: YARN_NODE_LINKER=node-modules YARN_IGNORE_NODE=1 yarn test
