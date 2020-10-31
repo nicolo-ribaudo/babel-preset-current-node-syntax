@@ -10,5 +10,6 @@
   "numeric separators": [12.7, "1_2"],
   "optional chaining": [14.0, "a?.b"],
   "nullish coalescing": [14.0, "a ?? b"],
-  "import.meta": [10.4, "import.meta"]
+  "import.meta": [10.4, "import.meta"],
+  "top level await": [14.3, "await Promise.resolve()"]
 }

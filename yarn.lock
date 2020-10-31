@@ -68,10 +68,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-plugin-utils@npm:^7.8.0, @babel/helper-plugin-utils@npm:^7.8.3":
-  version: 7.8.3
-  resolution: "@babel/helper-plugin-utils@npm:7.8.3"
-  checksum: 56f09626f24511aadd36a96aacd8658274ededc2e94f5e85bb6e51c9e6ad72eb1dd9f9a28a4ee5a8691de7601cf2a8e63ce235db01dda8964779940281f2787f
+"@babel/helper-plugin-utils@npm:^7.10.4, @babel/helper-plugin-utils@npm:^7.8.0, @babel/helper-plugin-utils@npm:^7.8.3":
+  version: 7.10.4
+  resolution: "@babel/helper-plugin-utils@npm:7.10.4"
+  checksum: 9f617e619a3557cb5fae8885e91cd94ba4ee16fb345e0360de0d7dc037efb10cc604939ecc1038ccdb71aa37e7e78f20133d7bbbebecb8f6dcdb557650366d92
   languageName: node
   linkType: hard
 
@@ -243,6 +243,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/plugin-syntax-top-level-await@npm:^7.8.3":
+  version: 7.12.1
+  resolution: "@babel/plugin-syntax-top-level-await@npm:7.12.1"
+  dependencies:
+    "@babel/helper-plugin-utils": ^7.10.4
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: 9767e46ddc1add9133a21f5d6c4452e9a62f891fe1db5d8291f62f9036f9e697bc118adad43109a8740ac15769e9489d68d134b17cfe9f3bdf06d2c50c9c6dce
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.0.0, @babel/template@npm:^7.8.3":
   version: 7.8.6
   resolution: "@babel/template@npm:7.8.6"
@@ -307,6 +318,7 @@ __metadata:
     "@babel/plugin-syntax-object-rest-spread": ^7.8.3
     "@babel/plugin-syntax-optional-catch-binding": ^7.8.3
     "@babel/plugin-syntax-optional-chaining": ^7.8.3
+    "@babel/plugin-syntax-top-level-await": ^7.8.3
   peerDependencies:
     "@babel/core": ^7.0.0
   languageName: unknown
