@@ -32,10 +32,9 @@
     "@babel/core": "^7.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.0.0"
-  },
-  "resolutions": {
-    "@babel/parser": "7.0.0"
+    "@babel/core": "7.0.0",
+    "@babel/parser-7.0.0": "npm:@babel/parser@7.0.0",
+    "@babel/parser-7.9.0": "npm:@babel/parser@7.9.0"
   },
   "license": "MIT"
 }

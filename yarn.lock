@@ -113,12 +113,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/parser@npm:7.0.0":
+"@babel/parser-7.0.0@npm:@babel/parser@7.0.0":
   version: 7.0.0
   resolution: "@babel/parser@npm:7.0.0"
   bin:
     parser: ./bin/babel-parser.js
   checksum: 1d8afb673ed805a08a5fce27254cef6d7c1af58211e091f538279a49d2d9c66c17307f069d570b77c4a187d3302ebcdd5d76d8f118c214adfda36531315f6fd8
+  languageName: node
+  linkType: hard
+
+"@babel/parser-7.9.0@npm:@babel/parser@7.9.0":
+  version: 7.9.0
+  resolution: "@babel/parser@npm:7.9.0"
+  bin:
+    parser: ./bin/babel-parser.js
+  checksum: e7ba36d98b00784a6866cb64a166eafc17d0e845d20b340a782a5d8715a967ecc2d868cb92b600840441bd3ac82e76d05d192f5db6de2eb4bce04f5f56c4765e
+  languageName: node
+  linkType: hard
+
+"@babel/parser@npm:^7.0.0, @babel/parser@npm:^7.8.6, @babel/parser@npm:^7.9.0":
+  version: 7.12.3
+  resolution: "@babel/parser@npm:7.12.3"
+  bin:
+    parser: ./bin/babel-parser.js
+  checksum: 3605bcf97e956ef36506ccb7e0ca4432025d8992c7e1f5d5b03976750a1198a0b27f461ab9304dbc5319a154b5ea19c09e72f87bfc5c08dd2780428734e13339
   languageName: node
   linkType: hard
 
@@ -307,6 +325,8 @@ __metadata:
   resolution: "babel-preset-current-node-syntax@workspace:."
   dependencies:
     "@babel/core": 7.0.0
+    "@babel/parser-7.0.0": "npm:@babel/parser@7.0.0"
+    "@babel/parser-7.9.0": "npm:@babel/parser@7.9.0"
     "@babel/plugin-syntax-async-generators": ^7.8.4
     "@babel/plugin-syntax-bigint": ^7.8.3
     "@babel/plugin-syntax-class-properties": ^7.8.3
@@ -385,6 +405,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"function-bind@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "function-bind@npm:1.1.1"
+  checksum: ffad86e7d2010ba179aaa6a3987d2cc0ed48fa92d27f1ed84bfa06d14f77deeed5bfbae7f00bdebc0c54218392cab2b18ecc080e2c72f592431927b87a27d42b
+  languageName: node
+  linkType: hard
+
 "globals@npm:^11.1.0":
   version: 11.12.0
   resolution: "globals@npm:11.12.0"
@@ -396,6 +423,24 @@ __metadata:
   version: 3.0.0
   resolution: "has-flag@npm:3.0.0"
   checksum: 63aade480d27aeedb3b5b63a2e069d47d0006bf182338d662e7941cdc024e68a28418e0efa8dc5df30db9c4ee2407f39e6ea3f16cfbc6b83848b450826a28aa0
+  languageName: node
+  linkType: hard
+
+"has@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "has@npm:1.0.3"
+  dependencies:
+    function-bind: ^1.1.1
+  checksum: c686e15300d41364486c099a9259d9c418022c294244843dcd712c4c286ff839d4f23a25413baa28c4d2c1e828afc2aaab70f685400b391533980223c71fa1ca
+  languageName: node
+  linkType: hard
+
+"is-core-module@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "is-core-module@npm:2.0.0"
+  dependencies:
+    has: ^1.0.3
+  checksum: de99dfbdf14d254f6d078aa37113512295acef3cfff5fb39fdf8020b04788535eae6da39e02b0c4ad07f7bc79594de8d5aeb4fce66f97feb9c597d7d6d6d43d4
   languageName: node
   linkType: hard
 
@@ -446,20 +491,22 @@ __metadata:
   linkType: hard
 
 resolve@^1.3.2:
-  version: 1.15.1
-  resolution: "resolve@npm:1.15.1"
+  version: 1.18.1
+  resolution: "resolve@npm:1.18.1"
   dependencies:
+    is-core-module: ^2.0.0
     path-parse: ^1.0.6
-  checksum: 34f77287b44a7eb4588d9d631165c763099a82aca3132920e0fdcde428a51f2cf69190c19e2309e35288a0702f57fefeb951da6138677036a16636b2f0e7b8dd
+  checksum: deb5ba746e1c038ba8fb7ca5c35ee3fe88665e2f79be3e9a706e5254eeea55eb12b6f1830dd60a11bbafa327bcd868284fbf5caf428cf5761b3f094abdffee77
   languageName: node
   linkType: hard
 
 "resolve@patch:resolve@^1.3.2#builtin<compat/resolve>":
-  version: 1.15.1
-  resolution: "resolve@patch:resolve@npm%3A1.15.1#builtin<compat/resolve>::version=1.15.1&hash=3388aa"
+  version: 1.18.1
+  resolution: "resolve@patch:resolve@npm%3A1.18.1#builtin<compat/resolve>::version=1.18.1&hash=3388aa"
   dependencies:
+    is-core-module: ^2.0.0
     path-parse: ^1.0.6
-  checksum: 6588c8a8735d8b2a00cfee2a325538f325ae5e48653490882d3e8afe6124f25c25d60ec09864f30a03c4471a3201c9cfba0e14ca0f74f626ac4b5c8d2e42c2c2
+  checksum: 9e62d2803ad1ec21b13780cc6a45b72bb7b6525eb5b44f0ede7cde37c00a8eb310c06ebfcc7de7dc10c2234d7d271bc4f1eed9783fb87acac141597cd4efaeec
   languageName: node
   linkType: hard
 
