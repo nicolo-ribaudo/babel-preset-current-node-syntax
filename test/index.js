@@ -1,4 +1,3 @@
-const fs = require("fs");
 const babel = require("@babel/core");
 const thisPreset = require("..");
 
@@ -9,14 +8,18 @@ const currentVersion = parseVersion(process.version);
 
 console.log(`INFO - Running on node ${process.version}`);
 
-for (const [name, [version, code]] of Object.entries(fixtures)) {
+for (const [name, [version, code, parser]] of Object.entries(fixtures)) {
   if (name.startsWith("#")) continue; // "JSON comments"
 
   const shouldThrow = parseVersion(version) > currentVersion;
   let didThrow = false;
 
   try {
-    babel.parseSync(code, { configFile: false, presets: [thisPreset] });
+    babel.parseSync(code, {
+      configFile: false,
+      presets: [thisPreset],
+      plugins: [selectParser(parser)],
+    });
   } catch {
     didThrow = true;
   }
@@ -28,6 +31,12 @@ for (const [name, [version, code]] of Object.entries(fixtures)) {
     console.log(`FAIL - ${msg}, unexpectedly.`);
     process.exitCode = 1;
   }
+}
+
+function selectParser(version = "@babel/parser-7.0.0") {
+  return () => ({
+    parserOverride: require(version).parse
+  });
 }
 
 function parseVersion(v) {
