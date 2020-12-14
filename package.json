@@ -12,7 +12,8 @@
     "url": "https://github.com/nicolo-ribaudo"
   },
   "scripts": {
-    "test": "node ./test/index.js"
+    "test": "node ./test/index.js",
+    "prepublish": "./scripts/check-yarn-bug.sh"
   },
   "dependencies": {
     "@babel/plugin-syntax-async-generators": "^7.8.4",
