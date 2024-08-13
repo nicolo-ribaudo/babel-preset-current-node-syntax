@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -15,30 +15,48 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.19, 12.4, 12.8, 13.11, 14.3, 14, 15]
+        node-version:
+          [
+            10.19,
+            12.4,
+            12.8,
+            13.11,
+            14.3,
+            14,
+            15,
+            16,
+            17,
+            18.19,
+            "18.20",
+            19,
+            20.9,
+            "20.10",
+            21,
+            22,
+          ]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: ./scripts/check-yarn-bug.sh
-    - run: yarn
-    - run: yarn test
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: ./scripts/check-yarn-bug.sh
+      - run: yarn
+      - run: yarn test
 
   build_10_0:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 10.19
-      uses: actions/setup-node@v1
-      with:
-        node-version: 10.19
-    - run: YARN_NODE_LINKER=node-modules yarn
-    - name: Use Node.js 10.0
-      uses: actions/setup-node@v1
-      with:
-        node-version: "10.0"
-    - run: YARN_NODE_LINKER=node-modules YARN_IGNORE_NODE=1 yarn test
+      - uses: actions/checkout@v2
+      - name: Use Node.js 10.19
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.19
+      - run: YARN_NODE_LINKER=node-modules yarn
+      - name: Use Node.js 10.0
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.0"
+      - run: YARN_NODE_LINKER=node-modules YARN_IGNORE_NODE=1 yarn test
