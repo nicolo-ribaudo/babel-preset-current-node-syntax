@@ -1,5 +1,5 @@
 {
-  "#______name_______": [ "min node version", "code", "@babel/parser" ],
+  "#______name_______": ["min node version", "code", "@babel/parser", "skip"],
   "object rest/spread": [8.6, "({...x})"],
   "async generators": [10.0, "async function* f() {}"],
   "optional catch binding": [10.0, "try {} catch {}"],
@@ -7,9 +7,15 @@
   "bigint": [10.8, "10n"],
   "public class fields": [12.4, "class A { x = 1 }"],
   "private class fields": [12.4, "class A { #x = 1 }"],
+  "class blocks": ["16.11", "class A { static {} }", "@babel/parser-7.12.0"],
   "numeric separators": [12.7, "1_2"],
   "optional chaining": [14.0, "a?.b"],
   "nullish coalescing": [14.0, "a ?? b"],
   "import.meta": [10.4, "import.meta"],
-  "top level await": [14.3, "await Promise.resolve()", "@babel/parser-7.9.0"]
+  "top level await": [14.3, "await Promise.resolve()", "@babel/parser-7.9.0"],
+  "import attributes": [
+    [["18.20", "19.0"], "20.10"],
+    "import 'x' with { type: 'json' }",
+    "@babel/parser-7.22.0"
+  ]
 }
