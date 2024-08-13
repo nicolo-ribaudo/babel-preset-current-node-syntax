@@ -37,5 +37,6 @@
     "@babel/parser-7.0.0": "npm:@babel/parser@7.0.0",
     "@babel/parser-7.9.0": "npm:@babel/parser@7.9.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "yarn@4.4.0"
 }
