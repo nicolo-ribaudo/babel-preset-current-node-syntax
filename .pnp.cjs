@@ -602,7 +602,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@babel/types", "npm:7.9.0"],\
           ["@babel/helper-validator-identifier", "npm:7.9.0"],\
-          ["lodash", "npm:4.17.15"],\
+          ["lodash", "npm:4.17.21"],\
           ["to-fast-properties", "npm:2.0.0"]\
         ],\
         "linkType": "HARD"\
@@ -886,10 +886,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["lodash", [\
-      ["npm:4.17.15", {\
-        "packageLocation": "./.yarn/cache/lodash-npm-4.17.15-566d9324f7-e3e43ed2f6.zip/node_modules/lodash/",\
+      ["npm:4.17.21", {\
+        "packageLocation": "./.yarn/cache/lodash-npm-4.17.21-6382451519-c08619c038.zip/node_modules/lodash/",\
         "packageDependencies": [\
-          ["lodash", "npm:4.17.15"]\
+          ["lodash", "npm:4.17.21"]\
         ],\
         "linkType": "HARD"\
       }]\
