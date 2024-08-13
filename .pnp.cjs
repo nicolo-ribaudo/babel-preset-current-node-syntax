@@ -99,7 +99,7 @@ const RAW_RUNTIME_STATE =
           ["@babel/traverse", "npm:7.25.3"],\
           ["@babel/types", "npm:7.25.2"],\
           ["convert-source-map", "npm:2.0.0"],\
-          ["debug", "virtual:341930f80996f4b1e479f0ee33257969b2165bf70992bcc76aa889af20d1c39a2bfc637461175a3ea65d6c75949d04c5fd87140f3b91c8912352de080c45e357#npm:4.1.1"],\
+          ["debug", "virtual:69c3455e973f914a9da079b465f412398aa9db4de6c967c5de9b7df9f75964a40ef9a5e9756b59c737917bf508a15667d830fc1be46cb0566180c490a2062629#npm:4.3.6"],\
           ["gensync", "npm:1.0.0-beta.2"],\
           ["json5", "npm:2.2.3"],\
           ["semver", "npm:6.3.1"]\
@@ -761,33 +761,12 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["debug", [\
-      ["npm:4.1.1", {\
-        "packageLocation": "./.yarn/cache/debug-npm-4.1.1-540248b3aa-19bd01e5b1.zip/node_modules/debug/",\
-        "packageDependencies": [\
-          ["debug", "npm:4.1.1"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
       ["npm:4.3.6", {\
         "packageLocation": "./.yarn/cache/debug-npm-4.3.6-ecb233d831-d3adb9af7d.zip/node_modules/debug/",\
         "packageDependencies": [\
           ["debug", "npm:4.3.6"]\
         ],\
         "linkType": "SOFT"\
-      }],\
-      ["virtual:341930f80996f4b1e479f0ee33257969b2165bf70992bcc76aa889af20d1c39a2bfc637461175a3ea65d6c75949d04c5fd87140f3b91c8912352de080c45e357#npm:4.1.1", {\
-        "packageLocation": "./.yarn/__virtual__/debug-virtual-97c1fd6b7d/0/cache/debug-npm-4.1.1-540248b3aa-19bd01e5b1.zip/node_modules/debug/",\
-        "packageDependencies": [\
-          ["debug", "virtual:341930f80996f4b1e479f0ee33257969b2165bf70992bcc76aa889af20d1c39a2bfc637461175a3ea65d6c75949d04c5fd87140f3b91c8912352de080c45e357#npm:4.1.1"],\
-          ["@types/supports-color", null],\
-          ["ms", "npm:2.1.2"],\
-          ["supports-color", null]\
-        ],\
-        "packagePeers": [\
-          "@types/supports-color",\
-          "supports-color"\
-        ],\
-        "linkType": "HARD"\
       }],\
       ["virtual:69c3455e973f914a9da079b465f412398aa9db4de6c967c5de9b7df9f75964a40ef9a5e9756b59c737917bf508a15667d830fc1be46cb0566180c490a2062629#npm:4.3.6", {\
         "packageLocation": "./.yarn/__virtual__/debug-virtual-4475a483b5/0/cache/debug-npm-4.3.6-ecb233d831-d3adb9af7d.zip/node_modules/debug/",\
