@@ -8,10 +8,19 @@ const currentVersion = parseVersion(process.version);
 
 console.log(`INFO - Running on node ${process.version}`);
 
-for (const [name, [version, code, parser]] of Object.entries(fixtures)) {
+for (const [name, [version, code, parser, skip]] of Object.entries(fixtures)) {
   if (name.startsWith("#")) continue; // "JSON comments"
 
-  const shouldThrow = parseVersion(version) > currentVersion;
+  const shouldThrow = !(
+    Array.isArray(version)
+      ? version.map((v) => (Array.isArray(v) ? v : [v]))
+      : [[version]]
+  ).some(
+    (version) =>
+      currentVersion >= parseVersion(version[0]) &&
+      (version.length === 1 || currentVersion < parseVersion(version[1]))
+  );
+
   let didThrow = false;
 
   try {
@@ -35,7 +44,7 @@ for (const [name, [version, code, parser]] of Object.entries(fixtures)) {
 
 function selectParser(version = "@babel/parser-7.0.0") {
   return () => ({
-    parserOverride: require(version).parse
+    parserOverride: require(version).parse,
   });
 }
 
