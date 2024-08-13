@@ -12,8 +12,7 @@
     "url": "https://github.com/nicolo-ribaudo"
   },
   "scripts": {
-    "test": "node ./test/index.js",
-    "prepublish": "./scripts/check-yarn-bug.sh"
+    "test": "node ./test/index.js"
   },
   "dependencies": {
     "@babel/plugin-syntax-async-generators": "^7.8.4",
@@ -37,6 +36,5 @@
     "@babel/parser-7.0.0": "npm:@babel/parser@7.0.0",
     "@babel/parser-7.9.0": "npm:@babel/parser@7.9.0"
   },
-  "license": "MIT",
-  "packageManager": "yarn@2.4.0"
+  "license": "MIT"
 }
