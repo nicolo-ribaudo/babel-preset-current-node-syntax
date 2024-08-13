@@ -3,3 +3,4 @@
 .yarn/install-state.gz
 .yarn/versions
 .pnp.js
+node_modules
