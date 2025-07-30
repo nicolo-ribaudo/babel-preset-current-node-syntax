@@ -1,4 +1,5 @@
-const babel = require("@babel/core");
+const babel7 = require("@babel/core");
+const babel8 = require("@babel/core-8");
 const thisPreset = require("..");
 
 const fixtures = require("./fixtures.json");
@@ -24,7 +25,7 @@ for (const [name, [version, code, parser, skip]] of Object.entries(fixtures)) {
   let didThrow = false;
 
   try {
-    babel.parseSync(code, {
+    babel7.parseSync(code, {
       configFile: false,
       presets: [thisPreset],
       plugins: [selectParser(parser)],
@@ -35,10 +36,29 @@ for (const [name, [version, code, parser, skip]] of Object.entries(fixtures)) {
 
   const msg = `${name} (${version}) ${didThrow ? "threw" : "didn't throw"}`;
   if (didThrow === shouldThrow) {
-    console.log(`OK - ${msg}, as expected.`);
+    console.log(`OK - ${msg} in babel 7, as expected.`);
   } else {
-    console.log(`FAIL - ${msg}, unexpectedly.`);
+    console.log(`FAIL - ${msg} in babel 7, unexpectedly.`);
     process.exitCode = 1;
+  }
+
+  if (parser) continue;
+
+  didThrow = false;
+  try {
+    babel8.parseSync(code, {
+      configFile: false,
+      presets: [thisPreset],
+    });
+  } catch {
+    didThrow = true;
+  }
+
+  if (didThrow && !shouldThrow) {
+    console.log(`FAIL - ${name} (${version}) threw in babel 8, unexpectedly.`);
+    process.exitCode = 1;
+  } else {
+    console.log(`OK - ${name} (${version}) didn't throw in babel 8, as expected.`);
   }
 }
 
