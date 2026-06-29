@@ -27,4 +27,13 @@ yarn node test/index.js
 The `test/fixtures.json` file contains a bunch of syntax tests, alongside with
 the minimum supported node version for each of them. Babel should throw on
 older versions, without support for that given syntax.
-All the tests are run using `@babel/parser@7.0.0`.
+
+The tests run against whichever version of `@babel/core` is installed. By
+default that is Babel 8, which supports all of these syntaxes natively. To test
+against Babel 7 (which relies on this preset to enable the syntax plugins), you
+can downgrade with:
+```
+npm install --no-save @babel/core@^7
+```
+CI runs the tests on Babel 8 on recent Node.js versions, and on Babel 7 across
+the whole range of supported Node.js versions.
