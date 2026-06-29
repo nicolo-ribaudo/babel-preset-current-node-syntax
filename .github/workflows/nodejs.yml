@@ -10,10 +10,34 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  # Babel 8 is the default. It only runs on recent Node.js versions, and it
+  # supports all the syntaxes enabled by this preset natively.
+  babel-8:
+    name: Babel 8 (Node.js ${{ matrix.node-version }})
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
+      matrix:
+        node-version: ["22.18", "24.11", "24"]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm test
+
+  # Babel 7 supports much older Node.js versions, so we downgrade to it to make
+  # sure the preset keeps detecting the right syntaxes across the whole range.
+  babel-7:
+    name: Babel 7 (Node.js ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
       matrix:
         node-version:
           [
@@ -35,15 +59,22 @@ jobs:
             "20.10",
             "21",
             "22",
+            "24",
           ]
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js latest
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      # Babel 8 (the default dependency) cannot be installed on old Node.js
+      # versions, so we install on a recent one and then downgrade to Babel 7.
+      - name: Install dependencies on Node.js latest
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
       - run: npm install
+      - name: Downgrade to Babel 7
+        run: npm install --no-save @babel/core@^7
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm test
