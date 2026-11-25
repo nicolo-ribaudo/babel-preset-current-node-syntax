@@ -8,11 +8,82 @@ function works(test) {
   }
 }
 
+// Each entry only enables some parser plugins, like the corresponding
+// @babel/plugin-syntax-* package does. They are inlined to avoid depending on
+// those packages, which only declare a peer dependency on Babel 7.
+function syntax(name, ...parserPlugins) {
+  return () => ({
+    name: `syntax-${name}`,
+    manipulateOptions(opts, parserOpts) {
+      parserOpts.plugins.push(...parserPlugins);
+    },
+  });
+}
+
+const syntaxPlugins = {
+  "object-rest-spread": syntax("object-rest-spread", "objectRestSpread"),
+  "async-generators": syntax("async-generators", "asyncGenerators"),
+  "optional-catch-binding": syntax(
+    "optional-catch-binding",
+    "optionalCatchBinding"
+  ),
+  "json-strings": syntax("json-strings", "jsonStrings"),
+  bigint: syntax("bigint", "bigInt"),
+  "optional-chaining": syntax("optional-chaining", "optionalChaining"),
+  "nullish-coalescing-operator": syntax(
+    "nullish-coalescing-operator",
+    "nullishCoalescingOperator"
+  ),
+  "numeric-separator": syntax("numeric-separator", "numericSeparator"),
+  "logical-assignment-operators": syntax(
+    "logical-assignment-operators",
+    "logicalAssignment"
+  ),
+  "class-properties": syntax(
+    "class-properties",
+    "classProperties",
+    "classPrivateProperties",
+    "classPrivateMethods"
+  ),
+  "private-property-in-object": syntax(
+    "private-property-in-object",
+    "privateIn"
+  ),
+  "class-static-block": syntax("class-static-block", "classStaticBlock"),
+  "import-meta": syntax("import-meta", "importMeta"),
+  "top-level-await": syntax("top-level-await", "topLevelAwait"),
+  // Same behavior as @babel/plugin-syntax-import-attributes
+  "import-attributes": () => {
+    let deprecatedAssertSyntax = false;
+    return {
+      name: "syntax-import-attributes",
+      manipulateOptions({ parserOpts, generatorOpts }) {
+        if (generatorOpts.importAttributesKeyword == null) {
+          generatorOpts.importAttributesKeyword = "with";
+        }
+        const index = parserOpts.plugins.indexOf("importAssertions");
+        if (index !== -1) {
+          parserOpts.plugins.splice(index, 1);
+          deprecatedAssertSyntax = true;
+        }
+        if (deprecatedAssertSyntax) {
+          parserOpts.plugins.push("deprecatedImportAssert", [
+            "importAttributes",
+            { deprecatedAssertSyntax: true },
+          ]);
+        } else {
+          parserOpts.plugins.push("importAttributes");
+        }
+      },
+    };
+  },
+};
+
 function getPluginsList(tests) {
   const plugins = [];
   for (const [name, cases] of Object.entries(tests)) {
     if (cases.some(works)) {
-      plugins.push(require.resolve(`@babel/plugin-syntax-${name}`));
+      plugins.push(syntaxPlugins[name]);
     }
   }
   return plugins;
@@ -59,14 +130,12 @@ const commonPlugins = getPluginsList({});
 const major = parseInt(process.versions.node, 10);
 const minor = parseInt(process.versions.node.match(/^\d+\.(\d+)/)[1], 10);
 if (major > 10 || (major === 10 && minor >= 4)) {
-  babel7OnlyPlugins.push(require.resolve("@babel/plugin-syntax-import-meta"));
+  babel7OnlyPlugins.push(syntaxPlugins["import-meta"]);
 }
 // Same for top level await - it is only supported in modules. It is supported
 // from 14.3.0
 if (major > 14 || (major === 14 && minor >= 3)) {
-  babel7OnlyPlugins.push(
-    require.resolve("@babel/plugin-syntax-top-level-await")
-  );
+  babel7OnlyPlugins.push(syntaxPlugins["top-level-await"]);
 }
 // Similar for import attributes
 if (
@@ -74,9 +143,7 @@ if (
   (major === 20 && minor >= 10) ||
   (major === 18 && minor >= 20)
 ) {
-  babel7OnlyPlugins.push(
-    require.resolve("@babel/plugin-syntax-import-attributes")
-  );
+  babel7OnlyPlugins.push(syntaxPlugins["import-attributes"]);
 }
 
 module.exports = ({ version }) => ({
